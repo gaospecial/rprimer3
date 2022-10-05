@@ -1,0 +1,11 @@
+Package: rPrimer3
+Type: Package
+Title: R interface for Primer3
+Version: 0.1.0
+Author: Chun-Hui Gao
+Maintainer: Chun-Hui Gao <gaospecial@gmail.com>
+Description: Primer3 is a popular primer designer. 
+    Here we provide the R interface for this program.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
