@@ -11,6 +11,13 @@ write_boulder(x, file = tempfile())
 
 \item{file}{output file}
 }
+\value{
+output file
+}
 \description{
 Write a list config to Boulder-IO format
+}
+\examples{
+  l = list(A = 1, B = 2)
+  write_boulder(l)
 }

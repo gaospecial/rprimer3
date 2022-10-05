@@ -3,14 +3,24 @@
 #' @param x a named list
 #' @param file output file
 #'
-#' @return
+#' @return output file
 #' @export
 #'
 #' @examples
+#'   l = list(A = 1, B = 2)
+#'   write_boulder(l)
 write_boulder = function(x, file = tempfile()){
   # TODO: check values
   name = names(x)
   out = paste(name, unlist(x), sep = "=", collapse = "\n")
   out = paste(out, "=", sep = "\n" )
   writeLines(text = out, con = file)
+  return(file)
+}
+
+read_boulder = function(x){
+  value = gsub("^[^=]+=", "", x)
+  name = gsub("=[^=]+$", "", x)
+  names(value) = name
+  return(value)
 }
