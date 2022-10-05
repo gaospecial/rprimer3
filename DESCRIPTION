@@ -6,6 +6,9 @@ Author: Chun-Hui Gao
 Maintainer: Chun-Hui Gao <gaospecial@gmail.com>
 Description: Primer3 is a popular primer designer. 
     Here we provide the R interface for this program.
-License: What license is it under?
+License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.0
+Imports: 
+    magrittr
