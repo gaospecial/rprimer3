@@ -12,7 +12,7 @@ write_boulder(x, file = tempfile())
 \item{file}{output file}
 }
 \value{
-output file
+output file name
 }
 \description{
 Write a list config to Boulder-IO format
