@@ -16,6 +16,7 @@ design_primer_from_file = function(fastafile,
                                    filter_description_pattern = NULL,
                                    parts = 3,
                                    part_length = 500,
+                                   parse = TRUE,
                                    ...){
   fasta = seqinr::read.fasta(file = fastafile, seqtype = "DNA", as.string = TRUE)
   if (!is.null(filter_description_pattern)){
@@ -27,7 +28,7 @@ design_primer_from_file = function(fastafile,
   }
   nseq = length(fasta)
   if (nseq < 1) stop("No sequence was found in ", fastafile)
-  result = lapply(fasta, design_primer, parse = TRUE, ...)
+  result = lapply(fasta, design_primer, parse = parse, ...)
   return(dplyr::bind_rows(result))
 }
 
