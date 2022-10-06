@@ -6,7 +6,7 @@ run_primer3 = function(config, exec = find_primer3()){
 
 find_primer3 = function(){
   if (.Platform$OS.type == "unix"){
-    ret = system("which primer3_core")
+    ret = system("which primer3_core", ignore.stdout = TRUE)
     if (ret == 0) return("primer3_core")
     stop("Primer3 is not found in your system. Please install it and retry.")
   } else if (.Platform$OS.type == "windows"){
