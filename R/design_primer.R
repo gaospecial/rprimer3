@@ -27,7 +27,7 @@ design_primer_from_file = function(fastafile,
   }
   nseq = length(fasta)
   if (nseq < 1) stop("No sequence was found in ", fastafile)
-  result = lapply(fasta, design_primer)
+  result = lapply(fasta, design_primer, parse = TRUE, ...)
   return(dplyr::bind_rows(result))
 }
 
