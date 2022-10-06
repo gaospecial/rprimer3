@@ -1,8 +1,10 @@
 Package: rPrimer3
 Type: Package
 Title: R interface for Primer3
-Version: 0.1.0
-Author: Chun-Hui Gao
+Version: 0.2.0
+Author: c(
+  person("Chun-Hui","Gao",email="gaospecial@gmail.com",role=c("aut","cre"), comment=c(ORCID = "0000-0002-1445-7939"))
+  )
 Maintainer: Chun-Hui Gao <gaospecial@gmail.com>
 Description: Primer3 is a popular primer designer. 
     Here we provide the R interface for this program.
