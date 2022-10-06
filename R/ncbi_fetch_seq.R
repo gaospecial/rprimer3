@@ -6,10 +6,13 @@
 #' @param rettype default: fasta
 #' @param file file to write sequence
 #'
-#' @return
+#' @return NULL, if write successfully
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#'   ncbi_fetch_seq("GCA_023823755.1")
+#' }
 ncbi_fetch_seq = function(term,
                           db_from = "assembly",
                           db_to = "nuccore",
