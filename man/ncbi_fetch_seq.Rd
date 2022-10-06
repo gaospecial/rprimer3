@@ -22,6 +22,8 @@ ncbi_fetch_seq(
 
 \item{rettype}{default: fasta}
 
+\item{retmode}{text}
+
 \item{file}{file to write sequence}
 }
 \value{

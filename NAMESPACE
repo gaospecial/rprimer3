@@ -2,6 +2,8 @@
 
 export("%>%")
 export(design_primer)
+export(design_primer_from_file)
 export(ncbi_fetch_seq)
+export(read_boulder)
 export(write_boulder)
 importFrom(magrittr,"%>%")

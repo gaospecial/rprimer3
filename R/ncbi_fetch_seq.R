@@ -4,6 +4,7 @@
 #' @param db_from search db
 #' @param db_to default: nuccore
 #' @param rettype default: fasta
+#' @param retmode text
 #' @param file file to write sequence
 #'
 #' @return NULL, if write successfully

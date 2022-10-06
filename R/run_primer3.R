@@ -1,33 +1,5 @@
-#' Design Primers
-#'
-#' @param fastafile sequence in fasta format
-#' @param ... other parameters passed to Primer3
-#'
-#' @return primers
-#' @export
-#'
-#' @examples
-#'   fastafile = system.file("sequence.fa", package = "rPrimer3")
-#'   design_primer(fastafile)
-design_primer = function(fastafile, ...){
-  fasta = seqinr::read.fasta(file = fastafile, seqtype = "DNA")
-  nseq = length(fasta)
-  if (nseq < 1) stop("No sequence was found in ", fastafile)
-  result = vector("list", nseq)
-  for (i in seq_along(fasta)){
-    this = fasta[[i]]
-    id = attr(this, "name")
-    seq = get_sequence(this)
-    config = primer3_configure(SEQUENCE_ID = id, SEQUENCE_TEMPLATE = seq, ...)
-    input = write_boulder(config)
-    output = run_primer3(input)
-    result[[i]] = parse_primer3_output(output)
-  }
-  return(dplyr::bind_rows(result))
-}
-
-
-run_primer3 = function(input, exec = find_primer3()){
+run_primer3 = function(config, exec = find_primer3()){
+  input = write_boulder(config)
   output <- system(paste(exec, input), intern=TRUE)
   return(output)
 }
