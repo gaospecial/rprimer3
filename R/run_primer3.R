@@ -19,6 +19,9 @@ find_primer3 = function(){
 
 parse_primer3_output = function(output){
   raw = read_boulder(output)
+  if (raw[["PRIMER_LEFT_NUM_RETURNED"]] == 0){
+    stop("No primer found. Please adjust parameters and retry.")
+  }
   id = raw[["SEQUENCE_ID"]]
   size = raw[["PRIMER_PAIR_0_PRODUCT_SIZE"]]
   fseq = raw[["PRIMER_LEFT_0_SEQUENCE"]]
