@@ -19,16 +19,19 @@ find_primer3 = function(){
 
 parse_primer3_output = function(output){
   raw = read_boulder(output)
-  if (raw[["PRIMER_LEFT_NUM_RETURNED"]] == 0){
-    stop("No primer found. Please adjust parameters and retry.")
+  required_keys = c("SEQUENCE_ID","PRIMER_PAIR_0_PRODUCT_SIZE","PRIMER_LEFT_0_SEQUENCE","PRIMER_RIGHT_0_SEQUENCE")
+  if (all(required_keys %in% names(raw))){
+    id = raw[["SEQUENCE_ID"]]
+    size = raw[["PRIMER_PAIR_0_PRODUCT_SIZE"]]
+    fseq = raw[["PRIMER_LEFT_0_SEQUENCE"]]
+    rseq = raw[["PRIMER_RIGHT_0_SEQUENCE"]]
+    df = dplyr::tibble(
+      name = paste0(id, c("f", "r")),
+      sequence = c(fseq, rseq),
+      product_size = size
+    )
+    return(df)
+  } else {
+    return(NULL)
   }
-  id = raw[["SEQUENCE_ID"]]
-  size = raw[["PRIMER_PAIR_0_PRODUCT_SIZE"]]
-  fseq = raw[["PRIMER_LEFT_0_SEQUENCE"]]
-  rseq = raw[["PRIMER_RIGHT_0_SEQUENCE"]]
-  dplyr::tibble(
-    name = paste0(id, c("f", "r")),
-    sequence = c(fseq, rseq),
-    product_size = size
-  )
 }
